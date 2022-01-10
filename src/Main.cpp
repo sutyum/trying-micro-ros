@@ -11,7 +11,7 @@
 #include <std_msgs/msg/string.h>
 
 #define CLIENT_IP "192.168.1.177"
-#define AGENT_IP "192.168.1.176"
+#define AGENT_IP "192.168.1.108"
 #define AGENT_PORT 8888
 #define NODE_NAME "stm32_node"
 

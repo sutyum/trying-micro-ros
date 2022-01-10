@@ -11,21 +11,7 @@ STM32F407 + Ethernet (eg. STM32-E407 Olimex board) directly connected with Ether
 | device | IP:PORT |
 | - | - |
 | Client (STM32F407 + Ethernet) | `192.168.1.177` |
-| Agent (user's laptop) | `192.168.1.176:8888` |
-
-Please set a static IP address on your laptop, eg. with netplan:
-
-```yaml
-network:
-  version: 2
-  renderer: networkd
-  ethernets:
-    enp7s0:
-      dhcp4: no
-      dhcp6: no
-      addresses:           
-        - 192.168.1.176/24
-```
+| Agent (user's laptop) | `192.168.1.108:8888` |
 
 ## Flashing STM32
 
@@ -44,16 +30,6 @@ $ pio run --target upload
 $ pio run --target clean
 
 ```
-
-### ST-Link
-
-uncomment:
-
-```
-upload_protocol = stlink
-```
-
-and click **PlatformIO: Upload** button.
 
 ### Serial
 
@@ -117,31 +93,24 @@ data: 'Hello World: 9, sys_clk: 9000'
 ---
 ```
 
-## Troubleshooting
-
-### Access rights to ST-LINK
-
-```
-Error: libusb_open() failed with LIBUSB_ERROR_ACCESS
-Error: open failed
-in procedure 'program'
-** OpenOCD init failed **
-shutdown command invoked
-```
-
-Solution:
-
-```bash
-sudo apt -y install stlink-tools
-sudo systemctl restart udev
-```
-
-After that, unplug your stlink (or development board) for 5 seconds and plugin it in again. This will cause the new device permissions to take effect.
-
-Now you can retry uploading the firmware from PlatformIO.
-
-[*Source](https://techoverflow.net/2021/09/22/how-to-fix-platformio-stm32-error-libusb_open-failed-with-libusb_error_access/)
-
 ---
 
+## Troubleshooting
+
 > [STM32Ethernet](https://github.com/stm32duino/STM32Ethernet/issues/23)
+
+### Static IP on Ubuntu
+
+Please set a static IP address on your laptop, eg. with netplan:
+
+```yaml
+network:
+  version: 2
+  renderer: networkd
+  ethernets:
+    enp7s0:
+      dhcp4: no
+      dhcp6: no
+      addresses:           
+        - 192.168.1.176/24
+```
