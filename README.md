@@ -141,3 +141,7 @@ After that, unplug your stlink (or development board) for 5 seconds and plugin i
 Now you can retry uploading the firmware from PlatformIO.
 
 [*Source](https://techoverflow.net/2021/09/22/how-to-fix-platformio-stm32-error-libusb_open-failed-with-libusb_error_access/)
+
+---
+
+> [STM32Ethernet](https://github.com/stm32duino/STM32Ethernet/issues/23)
